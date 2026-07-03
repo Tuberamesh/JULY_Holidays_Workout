@@ -43,3 +43,24 @@ class Solution {
 //    Approach:  Traverse the array with one pointer (`i`). Whenever an element is not equal to `val`, place it at index `k` and increment `k`. This overwrites unwanted elements in-place.
 //    Time Complexity:   O(n)  – The array is traversed only once.
 //    Space Complexity:   O(1)  – No extra data structure is used; the modification is done in-place.
+
+
+
+class Solution {
+    public int removeDuplicates(int[] nums) {
+    int slow=0;
+    for(int fast=1;fast<nums.length;fast++){
+        if(nums[slow]!=nums[fast]){
+            slow++;
+            nums[slow]=nums[fast];
+        }
+    }
+    return slow+1  ;
+      }
+}
+
+        
+//     Pattern: Two Pointers (Fast & Slow)
+// Approach: Use a fast pointer to scan the array and a slow pointer to track the position of the last unique element. When a new unique element is found, place it at the next position.
+// Time Complexity: O(n) – The array is traversed only once.
+// Space Complexity: O(1) – Duplicates are removed in-place without using extra memory.
