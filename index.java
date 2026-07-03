@@ -1,3 +1,5 @@
+//problem two sum  
+
 class Solution {
     public int[] twoSum(int[] nums, int target) {
 
@@ -17,3 +19,11 @@ class Solution {
         
     }
 }
+
+// Pattern: Brute Force (Nested Loops)
+
+// Approach:
+// Check every possible pair of elements. If their sum equals the target, return their indices.
+
+// Time Complexity: O(n²)
+// Space Complexity: O(1)
