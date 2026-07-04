@@ -149,3 +149,33 @@ class Solution {
 // Approach: Trim the string to remove leading and trailing spaces, find the index of the last space, and calculate the length of the last word based on that index.
 // Time Complexity: O(n) – The string is traversed to trim and find the last space.
 // Space Complexity: O(1) – No extra space is used beyond a few variables.
+
+
+public class Solution{
+
+  boolean canConstruct(String ransomNote, String magazine) {
+    int[] charCount = new int[26];
+
+    
+    for (char c : magazine.toCharArray()) {
+      charCount[c - 'a']++;
+    }
+
+ 
+    for (char c : ransomNote.toCharArray()) {
+      if (charCount[c - 'a'] == 0) {
+        return false; 
+      }
+      charCount[c - 'a']--;
+    }
+
+    
+    return true;
+  }
+
+}
+
+// Pattern: Hash Table
+// Approach: Use an array to count the frequency of each character in the magazine. Then, iterate through the ransom note and decrease the count for each character used. If any character count becomes zero, return false.
+// Time Complexity: O(n + m) – Where n is the length of the magazine and m is the length of the ransom note.
+// Space Complexity: O(1) – The size of the array is constant (26 characters).
