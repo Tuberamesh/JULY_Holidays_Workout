@@ -104,3 +104,34 @@ class Solution {
 // Approach: Iterate through the array, maintaining a running sum of the maximum subarray ending at the current index. Update the global maximum whenever the running sum exceeds it.
 // Time Complexity: O(n) – The array is traversed only once.
 // Space Complexity: O(1) – Only a
+
+
+class Solution {
+    public String longestCommonPrefix(String[] strs) {
+
+        if(strs==null)return "";
+        
+        StringBuilder result=new StringBuilder();
+        
+        Arrays.sort(strs);
+        char [] first=strs[0].toCharArray();
+        char [] last=strs[strs.length-1].toCharArray();
+
+        for(int i=0;i<first.length;i++){
+            if(first[i]!=last[i])
+              break;
+            result.append(first[i]);
+
+        }
+        return result.toString();
+
+        
+
+        
+    }
+}
+
+// Pattern: Sorting and Comparison
+// Approach: Sort the array of strings and compare the first and last strings character by character to find the longest common prefix.
+// Time Complexity: O(n log n) – Due to sorting the array
+// Space Complexity: O(1) – Only a constant amount of extra space is used for the result.
