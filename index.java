@@ -83,3 +83,24 @@ class Solution {
 // Approach: Iterate through the array and find the first index where the element is greater than or equal to the target.
 // Time Complexity: O(n) – In the worst case, we may need to check every element.
 // Space Complexity: O(1) – No extra space is used.
+
+
+class Solution {
+    public int maxSubArray(int[] nums) {
+
+        int max=nums[0];
+        int sum=nums[0];
+        for(int i=1;i<nums.length;i++){
+
+            sum=Math.max(nums[i],sum+nums[i]);
+
+            max=Math.max(max,sum);
+        }
+        return max;
+        
+    }
+}
+// Pattern: Dynamic Programming (Kadane's Algorithm)
+// Approach: Iterate through the array, maintaining a running sum of the maximum subarray ending at the current index. Update the global maximum whenever the running sum exceeds it.
+// Time Complexity: O(n) – The array is traversed only once.
+// Space Complexity: O(1) – Only a
