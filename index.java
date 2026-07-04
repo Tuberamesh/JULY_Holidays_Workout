@@ -135,3 +135,17 @@ class Solution {
 // Approach: Sort the array of strings and compare the first and last strings character by character to find the longest common prefix.
 // Time Complexity: O(n log n) – Due to sorting the array
 // Space Complexity: O(1) – Only a constant amount of extra space is used for the result.
+
+
+class Solution {
+    public int lengthOfLastWord(String s) {
+        s = s.trim(); 
+        int lastSpaceIndex = s.lastIndexOf(' '); 
+        return s.length() - lastSpaceIndex - 1; 
+    }
+}
+
+// Pattern: String Manipulation
+// Approach: Trim the string to remove leading and trailing spaces, find the index of the last space, and calculate the length of the last word based on that index.
+// Time Complexity: O(n) – The string is traversed to trim and find the last space.
+// Space Complexity: O(1) – No extra space is used beyond a few variables.
