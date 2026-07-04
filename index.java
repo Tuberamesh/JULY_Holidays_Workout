@@ -64,3 +64,22 @@ class Solution {
 // Approach: Use a fast pointer to scan the array and a slow pointer to track the position of the last unique element. When a new unique element is found, place it at the next position.
 // Time Complexity: O(n) – The array is traversed only once.
 // Space Complexity: O(1) – Duplicates are removed in-place without using extra memory.
+
+
+class Solution {
+    public int searchInsert(int[] nums, int target) {
+        
+        int n=nums.length;
+
+        for(int i=0;i<n;i++){
+            if(nums[i]>=target)
+            return i;
+        }
+        return n;
+    }
+}
+
+// Pattern: Linear Search
+// Approach: Iterate through the array and find the first index where the element is greater than or equal to the target.
+// Time Complexity: O(n) – In the worst case, we may need to check every element.
+// Space Complexity: O(1) – No extra space is used.
