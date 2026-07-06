@@ -215,3 +215,37 @@ class Solution {
 //number repeats (i.e., is found in the HashSet), return false, indicating a cycle.
 //Time Complexity: O(log n) – The number of digits in n decreases with each iteration, leading to a logarithmic number of iterations.
 //Space Complexity: O(log n) – The HashSet may store up to log n unique numbers.
+
+
+
+class Solution {
+    public boolean isAnagram(String s, String t) {
+
+        if(s.length()!=t.length()){
+            return false;
+        }
+
+        Map<Character,Integer> s1=new HashMap<>();
+        Map<Character,Integer> s2=new HashMap<>();
+
+        for(int i=0;i<s.length();i++){
+            char c=s.charAt(i);
+            s1.put(c,s1.getOrDefault(c,0)+1);
+        }
+
+        // add we use in hset for listn and aray for set. but here we puting in a slots.. 
+
+        for(int i=0;i<t.length();i++){
+            char c=t.charAt(i);
+            s2.put(c,s2.getOrDefault(c,0)+1);
+        }
+ 
+        return s1.equals(s2);
+ 
+        
+    }
+}
+// Pattern: Hash Map
+// Approach: Use two hash maps to count the frequency of each character in both strings. Compare the two maps to determine if they are anagrams.
+// Time Complexity: O(n) – Where n is the length of the strings (since they are of equal length).
+// Space Complexity: O(n) – Two hash maps are used to store character counts, which can grow with the size of the input strings.
