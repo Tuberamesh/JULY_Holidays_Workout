@@ -179,3 +179,39 @@ public class Solution{
 // Approach: Use an array to count the frequency of each character in the magazine. Then, iterate through the ransom note and decrease the count for each character used. If any character count becomes zero, return false.
 // Time Complexity: O(n + m) – Where n is the length of the magazine and m is the length of the ransom note.
 // Space Complexity: O(1) – The size of the array is constant (26 characters).
+
+
+
+class Solution {
+    public boolean isHappy(int n) {
+
+        HashSet<Integer> has = new HashSet<>();
+
+        while (n != 1) {
+
+            if (has.contains(n)) {
+                return false;
+            }
+
+            has.add(n);
+
+            int sum = 0;
+
+            while (n != 0) {
+                int digit = n % 10;
+                sum += digit * digit;
+                n /= 10;
+            }
+
+            n = sum;
+        }
+
+        return true;
+    }
+}
+
+// Pattern: Hash Set
+// Approach: Use a HashSet to track previously seen numbers. For each number, calculate the sum of the squares of its digits. If the number becomes 1, return true. If a
+//number repeats (i.e., is found in the HashSet), return false, indicating a cycle.
+//Time Complexity: O(log n) – The number of digits in n decreases with each iteration, leading to a logarithmic number of iterations.
+//Space Complexity: O(log n) – The HashSet may store up to log n unique numbers.
