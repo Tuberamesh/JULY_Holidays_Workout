@@ -308,3 +308,32 @@ class Solution {
         return nums[n/2];
     }
 }
+
+import java.util.Arrays;
+
+class Solution {
+    public int majorityElement(int[] nums) {
+       
+
+        int vote=1;
+        int test=nums[0];
+        int n=nums.length;
+
+        for(int i=1;i<n;i++){
+            if(vote==0){
+                vote++;
+                test=nums[i];
+            }
+            else if (test==nums[i]) {
+                vote++;
+            }
+            else{
+                vote--;
+            }
+            
+        }
+        return test;
+    }
+}
+
+
