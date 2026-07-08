@@ -287,3 +287,24 @@ class Solution {
 // Approach: Use two pointers starting from the end of both arrays. Compare elements and place the larger one at the end of nums1. Continue until all elements from nums2 are merged into nums1.
 // Time Complexity: O(m + n) – Each element from both arrays is processed once.
 // Space Complexity: O(1) – The merging is done in-place without using extra space.
+
+
+
+
+
+import java.util.Arrays;
+
+class Solution {
+    public int majorityElement(int[] nums) {
+       
+
+        int vote=1;
+        int test=nums[0];
+        int n=nums.length;
+
+        Arrays.sort(nums);
+
+
+        return nums[n/2];
+    }
+}
