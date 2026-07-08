@@ -249,3 +249,41 @@ class Solution {
 // Approach: Use two hash maps to count the frequency of each character in both strings. Compare the two maps to determine if they are anagrams.
 // Time Complexity: O(n) – Where n is the length of the strings (since they are of equal length).
 // Space Complexity: O(n) – Two hash maps are used to store character counts, which can grow with the size of the input strings.
+
+
+
+
+
+class Solution {
+    public void merge(int[] nums1, int m, int[] nums2, int n) {
+        int i = m - 1;      
+        int j = n - 1;      
+        int k = m + n - 1;   
+
+        // Merge from the end
+        while (i >= 0 && j >= 0) {
+            if (nums1[i] > nums2[j]) {
+                nums1[k] = nums1[i];
+                i--;
+            } else {
+                nums1[k] = nums2[j];
+                j--;
+            }
+            k--;
+        }
+
+        // Copy remaining elements from nums2 (if any)
+        while (j >= 0) {
+            nums1[k] = nums2[j];
+            j--;
+            k--;
+        }
+
+        
+    }
+}
+
+// Pattern: Two Pointers (Merge from the End)
+// Approach: Use two pointers starting from the end of both arrays. Compare elements and place the larger one at the end of nums1. Continue until all elements from nums2 are merged into nums1.
+// Time Complexity: O(m + n) – Each element from both arrays is processed once.
+// Space Complexity: O(1) – The merging is done in-place without using extra space.
