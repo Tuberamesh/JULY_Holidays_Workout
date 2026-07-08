@@ -336,4 +336,7 @@ class Solution {
     }
 }
 
-
+// Pattern: Boyer-Moore Voting Algorithm
+// Approach: Maintain a count (vote) and a candidate (test). Iterate through the array, adjusting the count based on whether the current element matches the candidate. If the count reaches zero, select the current element as the new candidate. The final candidate is the majority element.
+// Time Complexity: O(n) – The array is traversed only once.
+// Space Complexity: O(1) – Only a few variables are used for counting and tracking the candidate.
