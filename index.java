@@ -499,3 +499,51 @@ class Solution {
    // formed by the lines at the two pointers and update the maximum area found. Move the pointer pointing to the shorter line inward, as this may lead to a larger area.\
     // Time Complexity: O(n) – Each element is processed at most once.
     // Space Complexity: O(1) – No extra space is used beyond a few variables.
+
+
+
+    class Solution {
+    public List<List<Integer>> threeSum(int[] nums) {
+
+        int n=nums.length;
+        if(nums==null || nums.length<3)
+        return new ArrayList<>();
+
+        Arrays.sort(nums);
+
+        Set<List<Integer>> res=new HashSet<>();
+
+        for(int i=0;i<n-1;i++){
+
+        int left=i+1;
+        int right=n-1;
+
+        while(left<right){
+            int sum = nums[i] + nums[left] + nums[right];
+
+            if(sum==0){
+                res.add(Arrays.asList(nums[i],nums[left],nums[right]));
+                left++;
+                right--;
+            }
+
+            else if(sum<0){
+                left++;
+            }
+            else{
+                right--;
+            }
+          
+        }
+        }
+
+        return new ArrayList<>(res);
+        
+    }
+}
+
+// Pattern: Two Pointers with Sorting
+// Approach: Sort the array and use a fixed pointer for one element, then apply the two
+//-pointer technique to find pairs that sum to the negative of the fixed element. Store unique triplets in a set to avoid duplicates.
+// Time Complexity: O(n^2) – The outer loop runs n times, and the inner two-pointer search runs in linear time.
+// Space Complexity: O(k) – Where k is the number of unique triplets found, stored in the set.
