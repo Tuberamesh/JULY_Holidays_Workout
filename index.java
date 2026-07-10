@@ -360,3 +360,7 @@ class Solution {
         
     }
 }
+// Pattern: Two Pointers
+// Approach: Clean the string by removing non-alphanumeric characters and converting it to lowercase. Use two pointers to compare characters from the start and end of the string, moving towards the center. If any characters don't match, return false; otherwise, return true.
+// Time Complexity: O(n) – The string is traversed once for cleaning and once for comparison.
+// Space Complexity: O(n) – A new string is created for the cleaned version, which can take up to O(n) space in the worst case.
