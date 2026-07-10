@@ -547,3 +547,37 @@ class Solution {
 //-pointer technique to find pairs that sum to the negative of the fixed element. Store unique triplets in a set to avoid duplicates.
 // Time Complexity: O(n^2) – The outer loop runs n times, and the inner two-pointer search runs in linear time.
 // Space Complexity: O(k) – Where k is the number of unique triplets found, stored in the set.
+
+
+public class Solution {
+    public boolean isValidSudoku(char[][] board) {
+        Map<Integer, Set<Character>> cols = new HashMap<>();
+        Map<Integer, Set<Character>> rows = new HashMap<>();
+        Map<String, Set<Character>> squares = new HashMap<>();
+
+        for (int r = 0; r < 9; r++) {
+            for (int c = 0; c < 9; c++) {
+                if (board[r][c] == '.') continue;
+
+                String squareKey = (r / 3) + "," + (c / 3);
+
+                if (rows.computeIfAbsent(r, k -> new HashSet<>()).contains(board[r][c]) ||
+                    cols.computeIfAbsent(c, k -> new HashSet<>()).contains(board[r][c]) ||
+                    squares.computeIfAbsent(squareKey, k -> new HashSet<>()).contains(board[r][c])) {
+                    return false;
+                }
+
+                rows.get(r).add(board[r][c]);
+                cols.get(c).add(board[r][c]);
+                squares.get(squareKey).add(board[r][c]);
+            }
+        }
+        return true;
+    }
+}
+
+// Pattern: Hash Map with Sets
+// Approach: Use three hash maps to track the characters seen in each row, column, and 3x3 square. For each cell, check if the character has already been seen in its
+// corresponding row, column, or square. If it has, return false. Otherwise, add the character to the respective sets.
+// Time Complexity: O(1) – The board size is fixed (9x9), so the operations are constant time.
+// Space Complexity: O(1) – The space used for the hash maps is constant since.
