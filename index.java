@@ -443,3 +443,27 @@ HAVING COUNT(student) >= 5;
 // Pattern: SQL Query with GROUP BY and HAVING
 // Approach: Select the class column from the Courses table, group the results by class, and
 // filter the groups to include only those with a count of students greater than or equal to 5 using the HAVING clause.
+
+class Solution {
+    public int[] plusOne(int[] digits) {
+        int n = digits.length;
+
+        
+        for (int i = n - 1; i >= 0; i--) {
+            if (digits[i] < 9) {
+                digits[i]++;  
+                return digits;
+            }
+            digits[i] = 0; 
+        }
+
+        
+        int[] newNumber = new int[n + 1];
+        newNumber[0] = 1; 
+        return newNumber;
+    }
+}
+// Pattern: Array Manipulation
+// Approach: Traverse the array from the end to the beginning. If a digit is less than 9, increment it and return the array. If a digit is 9, set it to 0 and continue. If all digits are 9, create a new array with an extra digit set to 1 at the beginning.
+// Time Complexity: O(n) – The array is traversed at most once.
+// Space Complexity: O(1) – In the case where a new array is created, it uses O(n) space, but otherwise, the operation is done in-place.
