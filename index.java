@@ -412,3 +412,8 @@ class Solution {
         return new int[0];
     }
 }
+// Pattern: Two Pointers
+// Approach: Use two pointers starting from the beginning and end of the sorted array. Calculate the sum of the elements at the two pointers. If the sum equals the target, return the indices.
+// If the sum is greater than the target, move the right pointer left to decrease the sum. If the sum is less than the target, move the left pointer right to increase the sum. Repeat until the pointers meet.
+// Time Complexity: O(n) – Each element is processed at most once.
+// Space Complexity: O(1) – No extra space is used beyond a few variables.
