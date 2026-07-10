@@ -431,3 +431,15 @@ or population >=25000000;
 // Pattern: SQL Query
 // Approach: Select the name, population, and area columns from the World table where the area
 // is greater than or equal to 3,000,000 or the population is greater than or equal to 25,000,000.
+
+# Write your MySQL query statement below
+
+select class
+
+from Courses 
+group by class
+HAVING COUNT(student) >= 5;
+
+// Pattern: SQL Query with GROUP BY and HAVING
+// Approach: Select the class column from the Courses table, group the results by class, and
+// filter the groups to include only those with a count of students greater than or equal to 5 using the HAVING clause.
