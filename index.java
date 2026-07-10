@@ -467,3 +467,35 @@ class Solution {
 // Approach: Traverse the array from the end to the beginning. If a digit is less than 9, increment it and return the array. If a digit is 9, set it to 0 and continue. If all digits are 9, create a new array with an extra digit set to 1 at the beginning.
 // Time Complexity: O(n) – The array is traversed at most once.
 // Space Complexity: O(1) – In the case where a new array is created, it uses O(n) space, but otherwise, the operation is done in-place.
+
+
+class Solution {
+    public int maxArea(int[] height) {
+        int n=height.length;
+
+        int left=0;
+        int right=n-1;
+        int max=0;
+
+        while(left<right){
+
+            int area= Math.min(height[left],height[right]) *( right-left);
+
+            max=Math.max(area, max);
+
+            if(height[left]>height[right]){
+                right--;
+            }
+            else{
+                left++;
+            }
+        }
+        return max;
+    }
+}
+
+// Pattern: Two Pointers
+// Approach: Use two pointers starting at the beginning and end of the array. Calculate the area
+   // formed by the lines at the two pointers and update the maximum area found. Move the pointer pointing to the shorter line inward, as this may lead to a larger area.\
+    // Time Complexity: O(n) – Each element is processed at most once.
+    // Space Complexity: O(1) – No extra space is used beyond a few variables.
