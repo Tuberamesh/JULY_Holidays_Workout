@@ -364,3 +364,51 @@ class Solution {
 // Approach: Clean the string by removing non-alphanumeric characters and converting it to lowercase. Use two pointers to compare characters from the start and end of the string, moving towards the center. If any characters don't match, return false; otherwise, return true.
 // Time Complexity: O(n) – The string is traversed once for cleaning and once for comparison.
 // Space Complexity: O(n) – A new string is created for the cleaned version, which can take up to O(n) space in the worst case.
+
+
+// class Solution {
+//     public int[] twoSum(int[] numbers, int target) {
+
+//         if(numbers.length==0){
+//             return;
+//         }
+
+//         int n=numbers.length;
+//         int res[]=new int[2];
+
+//         for(int i=0;i<n;i++){
+//             for(int j=i+1;j<n;j++){
+//                 if(numbers[i]+numbers[j]==target){
+//                     res[0]=i+1;
+//                     res[1]=j+1;
+//                 }
+//             }
+//         }
+
+//         return res;
+//     }
+// }
+
+
+class Solution {
+    public int[] twoSum(int[] numbers, int target) {
+        int l = 0;
+        int r = numbers.length - 1;
+
+        while (l < r) {
+            int currentSum = numbers[l] + numbers[r];
+
+            if (currentSum == target) {
+                return new int[] {l + 1, r + 1};
+            } 
+            else if (currentSum > target) {               
+                r--;
+            } 
+            else {               
+                l++;
+            }
+        }
+
+        return new int[0];
+    }
+}
