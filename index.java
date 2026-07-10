@@ -427,3 +427,7 @@ from World
 where 
 area >=3000000 
 or population >=25000000;
+
+// Pattern: SQL Query
+// Approach: Select the name, population, and area columns from the World table where the area
+// is greater than or equal to 3,000,000 or the population is greater than or equal to 25,000,000.
