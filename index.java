@@ -417,3 +417,13 @@ class Solution {
 // If the sum is greater than the target, move the right pointer left to decrease the sum. If the sum is less than the target, move the left pointer right to increase the sum. Repeat until the pointers meet.
 // Time Complexity: O(n) – Each element is processed at most once.
 // Space Complexity: O(1) – No extra space is used beyond a few variables.
+
+
+# Write your MySQL query statement below
+
+select name, 
+population, area
+from World
+where 
+area >=3000000 
+or population >=25000000;
