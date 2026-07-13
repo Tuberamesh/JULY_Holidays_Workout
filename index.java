@@ -692,3 +692,27 @@ class Solution {
 // Expand outwards to check for both odd and even length palindromes. Keep track of the longest palindrome found during the process.
 // Time Complexity: O(n^2) – For each character, we may expand to the entire length of the string in the worst case.
 // Space Complexity: O(1) – Only a few variables are used for tracking indices and
+
+
+class Solution {
+    public String reverseWords(String s) {
+        String[] words = s.trim().split("\\s+");
+        StringBuilder ans = new StringBuilder();
+
+        for (int i = words.length - 1; i >= 0; i--) {
+            ans.append(words[i]);
+
+            if (i != 0) {
+                ans.append(" ");
+            }
+        }
+
+        return ans.toString();
+    }
+}
+// Pattern: String Manipulation
+// Approach: Trim the input string to remove leading and trailing spaces, then split it into words
+  //  using whitespace as the delimiter. Reverse the order of the words and join them back together with a single space between each word.
+// Time Complexity: O(n) – The string is traversed multiple times (for trimming, splitting, and joining).
+// Space Complexity: O(n) – Additional space is used for the array of words.
+
