@@ -745,3 +745,44 @@ class Solution {
    // group. Use a hash map to group strings by their sorted character key. Finally, return the values of the map as a list of lists.
 // Time Complexity: O(n * k log k) – Where n is the number of strings and k is the maximum length of a string. Sorting each string takes O(k log k).
 // Space Complexity: O(n * k) – The hash map stores all the strings, and the sorted keys also take up space.
+
+class Solution {
+    public int[] topKFrequent(int[] nums, int k) {
+        
+        Map<Integer,Integer> fm =new HashMap<>();
+        List<Integer>[] bucket=new List[nums.length+1];
+
+        for(int n:nums){
+            fm.put(n,fm.getOrDefault(n,0)+1);
+        }
+
+        for(int key:fm.keySet()){
+            int frequnecy=fm.get(key);
+            if(bucket[frequnecy] ==null){
+                bucket[frequnecy]=new ArrayList<>();
+            }
+            bucket[frequnecy].add(key);
+
+        }
+        int[] res=new int[k];
+        int counter=0;
+
+        for(int i=bucket.length-1;i>=0 && counter<k;i--){
+            if(bucket[i]!=null){
+                for(int n:bucket[i]){
+                    if (counter <k);
+                    res[counter++] =n;
+                }
+                
+            }
+        }
+        return res;
+        
+    }
+}
+
+// Pattern: Bucket Sort
+// Approach: Count the frequency of each element using a hash map. Then, use an array
+//to create buckets where the index represents the frequency, and each bucket contains a list of elements with that frequency. Finally, iterate through the buckets in reverse order to collect the top k frequent elements.
+// Time Complexity: O(n) – Counting frequencies takes O(n), and iterating through the buckets also takes O(n).
+// Space Complexity: O(n) – The hash map and buckets array both take up space proportional to the number of unique elements in the input array.
