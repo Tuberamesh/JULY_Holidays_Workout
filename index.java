@@ -716,3 +716,32 @@ class Solution {
 // Time Complexity: O(n) – The string is traversed multiple times (for trimming, splitting, and joining).
 // Space Complexity: O(n) – Additional space is used for the array of words.
 
+import java.util.*;
+
+class Solution {
+    public List<List<String>> groupAnagrams(String[] strs) {
+
+        Map<String, List<String>> map = new HashMap<>();
+
+        for (String s : strs) {
+            char[] arr = s.toCharArray();
+            Arrays.sort(arr);
+            String key = new String(arr);
+
+           // map.computeIfAbsent(key, k -> new ArrayList<>()).add(s);
+
+             if (!map.containsKey(key)) {
+                map.put(key, new ArrayList<>());
+                // If NOT, create a new list for this anagram group
+            }
+             map.get(key).add(s);
+        }
+
+        return new ArrayList<>(map.values());
+    }
+}
+// Pattern: Hash Map with Sorting
+// Approach: For each string, sort its characters to create a key that represents its anagram
+   // group. Use a hash map to group strings by their sorted character key. Finally, return the values of the map as a list of lists.
+// Time Complexity: O(n * k log k) – Where n is the number of strings and k is the maximum length of a string. Sorting each string takes O(k log k).
+// Space Complexity: O(n * k) – The hash map stores all the strings, and the sorted keys also take up space.
