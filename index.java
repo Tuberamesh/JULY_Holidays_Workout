@@ -581,3 +581,60 @@ public class Solution {
 // corresponding row, column, or square. If it has, return false. Otherwise, add the character to the respective sets.
 // Time Complexity: O(1) – The board size is fixed (9x9), so the operations are constant time.
 // Space Complexity: O(1) – The space used for the hash maps is constant since.
+
+
+
+class Solution {
+    // LeetCode REQUIRES this to be 'int'
+    public int lengthOfLongestSubstring(String s) {
+        if (s == null || s.length() == 0) return 0;
+
+        Set<Character> charset = new HashSet<>();
+        int left = 0;
+        String longest = "";
+
+        for (int right = 0; right < s.length(); right++) {
+            while (charset.contains(s.charAt(right))) {
+                charset.remove(s.charAt(left));
+                left++;
+            }
+
+            charset.add(s.charAt(right));
+
+            if ((right - left + 1) > longest.length()) {
+                longest = s.substring(left, right + 1);
+            }
+        }
+        
+        // Return the length of the string you found
+        return longest.length();
+    }
+}
+//
+// class Solution {
+//     public int lengthOfLongestSubstring(String s) {
+//       Set <Character> charset=new HashSet<>();
+
+//       int left=0;
+//       int right;
+//       int max_length=0;
+
+//       for(right=0;right<s.length();right++){
+
+//          while(charset.contains(s.charAt(right))){
+//             charset.remove(s.charAt(left));
+//             left++;
+//          }
+
+//         charset.add(s.charAt(right));
+//         max_length=Math.max(max_length, right-left+1);
+    
+//       }
+//       return max_length;
+//     }
+//     } 
+// Pattern: Sliding Window with Hash Set
+// Approach: Use a sliding window defined by two pointers (left and right) to track the current substring without repeating characters. Use a hash set to store characters in the current window. If a
+// character is already in the set, move the left pointer to the right until the character can be added. Update the maximum length found during the process.
+// Time Complexity: O(n) – Each character is processed at most twice (once added and once removed).
+// Space Complexity: O(min(n, m)) – Where n is the length of the string and m is the size of the character set (e.g., 26 for lowercase letters). The hash set stores characters in the current window.
