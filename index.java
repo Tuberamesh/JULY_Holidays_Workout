@@ -638,3 +638,57 @@ class Solution {
 // character is already in the set, move the left pointer to the right until the character can be added. Update the maximum length found during the process.
 // Time Complexity: O(n) – Each character is processed at most twice (once added and once removed).
 // Space Complexity: O(min(n, m)) – Where n is the length of the string and m is the size of the character set (e.g., 26 for lowercase letters). The hash set stores characters in the current window.
+
+class Solution {
+    public  String longestPalindrome(String str) {
+
+    if (str.length() <= 1)
+      return str;
+
+    String LPS = "";
+
+    for (int i = 1; i < str.length(); i++) {
+
+      // Consider odd length
+      int low = i;
+      int high = i;
+      while(str.charAt(low) == str.charAt(high)) {
+        low--;
+        high++;
+
+        if (low == -1 || high == str.length())
+          break;
+      }
+
+      String palindrome = str.substring(low+1, high);
+      if (palindrome.length() > LPS.length()) {
+        LPS = palindrome;
+      }
+
+      // Consider even length
+      low = i-1;
+      high = i;
+      while(str.charAt(low) == str.charAt(high)) {
+        low--;
+        high++;
+
+        if (low == -1 || high == str.length())
+          break;
+      }
+
+      palindrome = str.substring(low+1, high);
+      if (palindrome.length() > LPS.length()) {
+        LPS = palindrome;
+      }
+    }
+
+    return LPS;
+  }
+
+}
+
+// Pattern: Expand Around Center
+// Approach: For each character in the string, consider it as the center of a potential palindrome
+// Expand outwards to check for both odd and even length palindromes. Keep track of the longest palindrome found during the process.
+// Time Complexity: O(n^2) – For each character, we may expand to the entire length of the string in the worst case.
+// Space Complexity: O(1) – Only a few variables are used for tracking indices and
